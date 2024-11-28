@@ -37,6 +37,7 @@
             color: var(--text-color-light);
         }
 
+
         .container {
             background-color: var(--container-bg-light);
             margin: 0 auto;
@@ -48,8 +49,12 @@
             padding: 20px;
         }
 
+        h1{
+            margin-top: 15px;
+        }
         form input[type="text"] {
             padding: 10px;
+            margin-top: 20px;
             border: none;
             outline: none;
             font-size: 18px;
@@ -76,7 +81,6 @@
             background-color: var(--bg-color-dark);
             color: var(--text-color-dark);
         }
-
         .container.dark-mode {
             background-color: var(--container-bg-dark);
             box-shadow: var(--shadow-dark) 0px 0px 20px 0px;
@@ -118,6 +122,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+            
         }
 
         .details > div {
@@ -125,10 +130,16 @@
             margin: 10px;
             flex: 1;
             text-align: center;
+            background-color: #f7f7f7;
         }
 
         #weather-data {
             display: none;
+        }
+
+        body.dark-mode .details > div {
+            background-color: #131010;
+            color: var(--text-color-dark);
         }
 
         @media (max-width: 768px) {
@@ -171,31 +182,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const themeRadios = document.querySelectorAll('input[name="theme"]');
-        const savedTheme = localStorage.getItem("theme") || "light";
-
-        // Apply saved theme on page load
-        if (savedTheme === "dark") {
-            document.body.classList.add("dark-mode");
-            document.querySelectorAll(".container, form, #weather-data").forEach(el => el.classList.add("dark-mode"));
-        }
-
-        themeRadios.forEach((radio) => {
-            radio.addEventListener("change", (event) => {
-                const selectedTheme = event.target.value;
-                if (selectedTheme === "dark") {
-                    document.body.classList.add("dark-mode");
-                    document.querySelectorAll(".container, form, #weather-data").forEach(el => el.classList.add("dark-mode"));
-                    localStorage.setItem("theme", "dark");
-                } else {
-                    document.body.classList.remove("dark-mode");
-                    document.querySelectorAll(".container, form, #weather-data").forEach(el => el.classList.remove("dark-mode"));
-                    localStorage.setItem("theme", "light");
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
