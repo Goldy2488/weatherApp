@@ -1,5 +1,4 @@
-const apikey = "d3311bdc5c05e90d2270126095ea8879";
-
+apikey = "d3311bdc5c05e90d2270126095ea8879";
 const weatherData = document.getElementById("weather-data");
 const cityInput = document.getElementById("city-input");
 const formEl = document.querySelector("form");
@@ -14,15 +13,20 @@ const details = document.querySelector(".details");
 const themeRadios = document.querySelectorAll('input[name="theme"]');
 const savedTheme = localStorage.getItem("theme") || "light";
 
-console.log(themeRadios)
-console.log(savedTheme);
+// console.log(themeRadios)
+// console.log(savedTheme);
 
-// Apply saved theme on page load
+// // Apply saved theme on page load
 if (savedTheme === "dark") {
   document.body.classList.add("dark-mode");
 
+  // themeRadios.defultValue = "dark";
+  
   document.querySelectorAll(".container, form, #weather-data").forEach(el => el.classList.add("dark-mode"));
 }
+
+// Set default radio button state
+document.querySelector(`input[name="theme"][value="${savedTheme}"]`).checked = true;
 
 themeRadios.forEach((radio) => {
   radio.addEventListener("change", (event) => {
